@@ -1,0 +1,108 @@
+@keyframes switch {
+	0% {
+	  transform: skew(0deg);
+	}
+	90% {
+		transform: skew(0deg);
+	}
+	95%{
+		transform: skew(20deg);
+	}
+	
+	96%{
+		transform: skew(-20deg);
+	}
+	
+	97%{
+		transform: skew(20deg);
+	}
+	
+	98%{
+		transform: skew(-20deg);
+	}
+	
+	100%{
+		transform:skew(0deg);
+	}
+}
+
+body{
+	background: repeating-linear-gradient(transparent, black 5px), repeating-linear-gradient(45deg, gray, black 5px);
+}
+#task{
+	display: flex;
+	position:sticky;
+	top:0em;
+	align-content: space-around;
+	align-self: center;
+	justify-content: center;
+}
+.tabs{
+	padding-left: 1em;
+	padding-right: 1em;
+	text-decoration-style: wavy;
+	border-radius: 10%;
+	border: 1px solid white;
+	font-size: 20;
+	margin-top: -10px;
+	height:60px;
+}
+.tabs::after{
+	border-radius: 10%;
+	margin-top: -10px;
+	display: block;
+	content: "";
+	width:1px;
+	height:1px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	transition: all 0.5s ease-in-out;
+}
+
+.tabs:hover::after{
+	transform: translate(5px,-20px ) 	scale(50, 50) ;
+}
+
+
+.search{
+	background-color: aqua;
+}
+.search::after{
+	background-image: url("searchImg.png");
+}
+
+.add{
+	background-color: chartreuse;
+}
+.add::after{
+	background-image: url("plusImg.png");
+}
+
+.profile{
+	background-color: darkgoldenrod;
+}
+.profile::after{
+	background-image: url("profileImg.png");
+}
+
+.inventory{
+	background-color: darkred;
+}
+.inventory::after{
+	background-image: url("inventoryImg.png");
+}
+
+.latest{
+	display: block;
+	margin: auto;
+	margin-top:10px;
+	width: 80%;
+	padding-top: 45%;
+	background-image: url("coinImg.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.slideShow{
+	animation: switch 8s infinite;
+	animation-direction: normal;
+}
