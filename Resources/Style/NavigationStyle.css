@@ -1,3 +1,11 @@
+@keyframes navTask {
+	0% {
+	  padding-left: 0px;
+	}	
+	100%{
+		padding-left: 60px;
+	}
+}
 #task{
 	margin-top: -10px;
 	display: flex;
@@ -8,6 +16,7 @@
 	justify-content: center;
 }
 .tabs{
+	color:white;
 	padding-left: 1em;
 	padding-right: 1em;
 	text-decoration-style: wavy;
@@ -16,6 +25,12 @@
 	font-size: 20;
 	margin-top: -10px;
 	height:60px;
+}
+.tabs:hover{
+	transition: all 0.5s ease-in-out;
+	animation: navTask 0.5s ease-in;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
 }
 .tabs::after{
 	border-radius: 10%;
@@ -30,33 +45,33 @@
 }
 
 .tabs:hover::after{
-	transform: translate(5px,-20px ) 	scale(50, 50) ;
+	transform: translate(-30px,-26px ) 	scale(50, 50) ;
 }
 
 
 .search{
-	background: repeating-linear-gradient(transparent, white 1px), repeating-linear-gradient( gray, gray 1px);
+	background: repeating-linear-gradient(transparent, black 24px), repeating-linear-gradient(-40deg, #700000,black 30px);
 }
 .search::after{
 	background-image: url("../Images/searchImg.png");
 }
 
 .add{
-	background: repeating-linear-gradient(transparent, white 1px), repeating-linear-gradient( gray, gray 1px);
+	background: repeating-linear-gradient(transparent, black 24px), repeating-linear-gradient(40deg, #700000,black 30px);
 }
 .add::after{
 	background-image: url("../Images/plusImg.png");
 }
 
 .profile{
-	background: repeating-linear-gradient(transparent, white 1px), repeating-linear-gradient( gray, gray 1px);
+	background: repeating-linear-gradient(transparent, black 24px), repeating-linear-gradient(-40deg, #700000,black 30px);
 }
 .profile::after{
 	background-image: url("../Images/profileImg.png");
 }
 
 .inventory{
-	background: repeating-linear-gradient(transparent, white 1px), repeating-linear-gradient( gray, gray 1px);
+	background: repeating-linear-gradient(transparent, black 24px), repeating-linear-gradient(40deg, #700000,black 30px);
 }
 .inventory::after{
 	background-image: url("../Images/inventoryImg.png");
