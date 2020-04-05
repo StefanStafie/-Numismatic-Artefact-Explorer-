@@ -9,32 +9,31 @@
 
 <body>
     <div class="white">
-        <h1>Login please</h1>
+        <h1>Change email</h1>
         <br><br>
-        <form action="login.php" method="get">
-            <label>username:</label><br>
-            <input type="text" name="username" /><br>
-            <label>password:</label><br>
+        <form action="changeEmail.php" method="get">
+            <label>New email:</label><br>
+            <input type="text" name="email" /><br>
+            <label>Confirm password:</label><br>
             <input type="password" name="password" /><br>
             <input type="submit" value="login" />
         </form>
         <?php
         require_once 'db_connection.php';
-        function login()
+        function chEmail()
         {
             if (isset($_GET) && count($_GET) >= 2) {
-                if (loginUser((string) $_GET['username'], (string) $_GET['password'])) {
+                if (changeEmail((string) $_GET['email'], (string) $_GET['password'])) {
                     header("Location: " . URL . "/Resources/profile/profile.php");
+                } else{
+                    echo "bad password";
                 }
             } else {
-                echo "please input username and password";
+                echo "please input new email and password";
             }
         }
-        login();
+        chEmail();
 
         ?>
-
-        <br><br>
-        <p>Would you like to <a href="register.php">register</a> instead?</p>
     </div>
 </body>
