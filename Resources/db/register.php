@@ -15,7 +15,7 @@
         <input type="text" name="email"/><br>
         <input type="submit" value="register"/>
     </form>
-</body>
+
 
 <?php
 include 'db_connection.php';
@@ -29,3 +29,6 @@ function register(){
 }
 register();
 ?>
+<br><br><p>Would you like to <a href = "login.php">login</a> instead?</p>
+
+</body>

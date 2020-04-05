@@ -13,7 +13,6 @@
         <input type="text" name="password"/><br>
         <input type="submit" value="login"/>
     </form>
-</body>
 
 <?php
 include 'db_connection.php';
@@ -29,3 +28,7 @@ function login(){
 login();
 
 ?>
+
+<br><br><p>Would you like to <a href = "register.php">register</a> instead?</p>
+
+</body>
