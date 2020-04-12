@@ -2,25 +2,33 @@
 #login {
     display: flex;
     flex-direction: column;
-    
+    flex-wrap:wrap;
     align-content:center;
-    align-self:center;
-    justify-content: center;
+    
+    justify-self: center;
     
     margin-top:5%;
     border:5px;
-   
-   
-    
-    
+   height:20em;
+   width:20em;
+   fill:red;
+   background-color: #311111;
+    text-decoration: wavy;    
     border-style: solid;
-    border-color: bisque;
+    border-color: rgb(71, 71, 71);
 
 }
-
+#login2 {
+    text-decoration-style: wavy;
+}
+#signinbutton {
+    width:100px;
+    margin-left:5em;
+}
 #type{
     display:flex;
     align-content:center;
     justify-content: center;
-  
+    fill: red;
+    fill-opacity: initial;
 }
