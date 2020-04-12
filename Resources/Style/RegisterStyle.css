@@ -1,16 +1,16 @@
 
-#login {
+#Register {
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap;
+    flex-wrap:wrap-reverse;
     align-content:center;
     
     justify-self: center;
     
     margin-top:5%;
     border:5px;
-   height:20em;
-   width:20em;
+   height:22em;
+   width:22em;
    fill:red;
    background-color: #3f0d0d;
     text-decoration: wavy;    
@@ -24,7 +24,7 @@ section h1{
     font-family:'Lucida Sans' ;   
     color:white;
 }
-#login2 {
+#Register2 {
     text-decoration-style: wavy;
     font-family: 'Lucida Sans' ;    
     color:white;
