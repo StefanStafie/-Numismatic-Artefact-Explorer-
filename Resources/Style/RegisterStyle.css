@@ -2,21 +2,21 @@
 #Register {
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap-reverse;
+    flex-wrap:wrap;
     align-content:center;
     
     justify-self: center;
     
     margin-top:5%;
     border:5px;
-   height:22em;
+   height:25em;
    width:22em;
    fill:red;
-   background-color: #3f0d0d;
+   background-color: rgba(90, 8, 8, 0.65);
     text-decoration: wavy;    
     border-style: solid;
     border-width: 3px;
-    border-color: rgb(71, 71, 71);
+    border-color: rgba(71, 71, 71,1);
 
 }
 
@@ -31,13 +31,27 @@ section h1{
 }
 #signinbutton {
     width:100px;
-    margin-left:5em;
+    
+    margin-left: 4em;
     font-family: 'Lucida Console' ; 
 }
 #type{
-    display:flex;
-    align-content:center;
+   display:flex;
+   
     justify-content: center;
     fill: red;
     fill-opacity: initial;
+}
+
+.input{
+    margin:1px;
+    width:15em;
+}
+.link:hover{
+    color:white;
+}
+#signinbutton:hover{
+    background-color:royalblue;
+    border-color: royalblue;
+    color:white;
 }
