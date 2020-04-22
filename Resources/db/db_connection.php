@@ -118,9 +118,24 @@ function verify($name, $password, $code)
         return false;
     }
 }
+function deleteUser($id)
+{
+    $conn = OpenCon();
+    $sql = 'DELETE FROM users WHERE id=' . $id;
+
+    if (mysqli_query($conn, $sql)) {
+        if (mysqli_affected_rows($conn) < 1) {
+            return false;
+        }
+        return true;
+    } else {
+        echo "Error updating record: " . mysqli_error($conn);
+        return false;
+    }
+}
 
 function sendMail($email)
-{
+{ //this doesn't work. Need to setup server.
     // The message
     $message = "Line 1\r\nLine 2\r\nLine 3";
 

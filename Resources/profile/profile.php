@@ -20,7 +20,8 @@
                 <p><a href = \"../db/changeEmail.php\">Change email</a></p>
                 <p><a href = \"../db/changePassword.php\">Change password</a></p>
                 <p><a href = \"../db/signout.php\">Sign Out</a></p>
-                <p><a href = \"../db/verify.php\">Verify</a></p>";
+                <p><a href = \"../db/verify.php\">Verify</a></p>
+                <p><a href = \"../db/deleteUser.php\">DELETE ACCOUNT</a></p>";
 
             if ($_SESSION['verified'] == '0') {
                 echo "You still haven't verified your email. Please DO.";
