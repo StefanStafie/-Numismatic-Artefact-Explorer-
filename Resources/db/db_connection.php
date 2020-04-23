@@ -12,7 +12,17 @@ function CloseCon($conn)
     $conn->close();
 }
 
-function registerUser($name, $password, $email)
+function databaseToSession($queryResult){
+    $worker = $queryResult->fetch_all();
+    $_SESSION['user_id'] = $worker[0][0];
+    $_SESSION['name'] = $worker[0][1];
+    $_SESSION['password'] = $worker[0][2];
+    $_SESSION['firstName'] = $worker[0][3];
+    $_SESSION['lastName'] = $worker[0][4];
+    $_SESSION['email'] = $worker[0][5];
+    $_SESSION['verified'] = $worker[0][6];
+}
+function registerUser($firstName, $lastName, $name, $password, $email)
 {
     $conn = OpenCon();
     /*check if username exists*/
@@ -24,16 +34,11 @@ function registerUser($name, $password, $email)
     } else {
         /*if user does not exist, create him*/
         $conn = OpenCon();
-        $stmt = $conn->prepare('INSERT INTO users (username, password, email) VALUES (?,?,?)');
-        $stmt->bind_param('sss', $name, $password, $email);
+        $stmt = $conn->prepare('INSERT INTO users (first_name, last_name, username, password, email) VALUES (?,?,?,?,?)');
+        $stmt->bind_param('sssss', $firstName, $lastName, $name, $password, $email);
         $stmt->execute();
         $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
-        $result2 = $result->fetch_all();
-        $_SESSION['email'] = $result2[0][3];
-        $_SESSION['user_id'] = $result2[0][0];
-        $_SESSION['verified'] = $result2[0][4];
-        $_SESSION['name'] = $name;
-        $_SESSION['password'] = $password;
+        databaseToSession($result);
         CloseCon($conn);
         return true;
     }
@@ -46,11 +51,7 @@ function loginUser($name, $password)
     $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
     $result2 = $result->fetch_all();
     if (count($result2) > 0) {
-        $_SESSION['email'] = $result2[0][3];
-        $_SESSION['user_id'] = $result2[0][0];
-        $_SESSION['verified'] = $result2[0][4];
-        $_SESSION['name'] = $name;
-        $_SESSION['password'] = $password;
+        databaseToSession($result);
         return true;
     } else {
         /*if user does not exist, create him*/
@@ -72,8 +73,7 @@ function changeEmail($email, $password)
             return false;
         }
         $result = $conn->query('Select * FROM users WHERE username = \'' . $_SESSION['name'] . '\' AND password = \'' . $password . '\'');
-        $result2 = $result->fetch_all();
-        $_SESSION['email'] = $result2[0][3];
+        databaseToSession($result);
         return true;
     } else {
         echo "Error updating record: " . mysqli_error($conn);
