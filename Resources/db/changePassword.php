@@ -27,7 +27,7 @@
             if (isset($_GET) && count($_GET) >= 3) {
                 if( (string) $_GET['password'] == (string) $_GET['password2']){
                     if (changePassword((string) $_GET['oldpassword'], (string) $_GET['password'])) {
-                        //header("Location: " . URL . "/Resources/profile/profile.php");
+                        header("Location: " . URL . "/Resources/profile/profile.php");
                     } else{
                         echo "bad password";
                     }
