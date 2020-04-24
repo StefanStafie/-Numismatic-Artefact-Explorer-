@@ -12,8 +12,7 @@ function CloseCon($conn)
     $conn->close();
 }
 
-function databaseToSession($queryResult){
-    $worker = $queryResult->fetch_all();
+function databaseToSession($worker){
     $_SESSION['user_id'] = $worker[0][0];
     $_SESSION['name'] = $worker[0][1];
     $_SESSION['password'] = $worker[0][2];
@@ -38,7 +37,8 @@ function registerUser($firstName, $lastName, $name, $password, $email)
         $stmt->bind_param('sssss', $firstName, $lastName, $name, $password, $email);
         $stmt->execute();
         $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
-        databaseToSession($result);
+        $result2 = $result->fetch_all();
+        databaseToSession($result2);
         CloseCon($conn);
         return true;
     }
@@ -51,10 +51,10 @@ function loginUser($name, $password)
     $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
     $result2 = $result->fetch_all();
     if (count($result2) > 0) {
-        databaseToSession($result);
+        databaseToSession($result2  );
         return true;
     } else {
-        /*if user does not exist, create him*/
+        /*if user does not exist, error*/
         echo "Bad username and password.";
         return false;
     }
@@ -73,7 +73,8 @@ function changeEmail($email, $password)
             return false;
         }
         $result = $conn->query('Select * FROM users WHERE username = \'' . $_SESSION['name'] . '\' AND password = \'' . $password . '\'');
-        databaseToSession($result);
+        $result2 = $result->fetch_all();
+        databaseToSession($result2);
         return true;
     } else {
         echo "Error updating record: " . mysqli_error($conn);

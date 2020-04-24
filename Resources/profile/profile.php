@@ -1,32 +1,41 @@
-<?php include '../navbar.php'; ?>
-
 <!DOCTYPE HTML>
+<html lang='en'>
 
 <head>
     <link rel="stylesheet" href="../style/style3.css">
+    <title>Profile</title>
 </head>
 
 <body>
-    <div class="white">
+    <?php include '../navbar.php'; ?>
+    <div id="red-canvas">
         <?php
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            echo "<h1> You are currently just a GUEST here.</h1>
-            <h1> Would you like to <a href = \"../db/login.php\">log in</a> or <a href = \"../db/register.php\">register</a>?</h1>";
+            echo "<div><h1> You are currently just a GUEST here.</h1><br>
+            <h1> Would you like to <a href = \"../db/login.php\">log in</a> or <a href = \"../db/register.php\">register</a>?</h1></div>";
         } else {
-            echo "<h1>Hello " . $_SESSION['name'] . "</h1> 
+            echo 
+            "<div>
+                <h1>Hello " . $_SESSION['name'] . "</h1> 
                 <h3> Your email: " . $_SESSION['email'] . "</h3>
+                <h3> First Name: " . $_SESSION['firstName'] . "</h3>
+                <h3> Last Name: " . $_SESSION['lastName'] . "</h3>
+            </div>
+            <div>
                 <h3>Not much to do here</h3><br>
                 <p><a href = \"../db/changeEmail.php\">Change email</a></p>
                 <p><a href = \"../db/changePassword.php\">Change password</a></p>
                 <p><a href = \"../db/signout.php\">Sign Out</a></p>
                 <p><a href = \"../db/verify.php\">Verify</a></p>
                 <p><a href = \"../db/deleteUser.php\">DELETE ACCOUNT</a></p>";
-
             if ($_SESSION['verified'] == '0') {
                 echo "You still haven't verified your email. Please DO.";
             }
+            echo "</div>";
         }
         ?>
     </div>
 </body>
+
+</html>

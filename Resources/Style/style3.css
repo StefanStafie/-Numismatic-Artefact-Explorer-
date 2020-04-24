@@ -1,36 +1,55 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black;
+    color: white;
+    text-align: center;
 }
 
-select,
-input,
-label {
-    width: 160px;
+#red-canvas {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    margin-top: 30px;
+    border: 3px solid rgba(71, 71, 71, 1);
+    background-color: rgba(90, 8, 8, 0.6);
+    font-size: large;
+    padding: 23px;
+    font-size: large;
+}
+
+#red-canvas div {
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+a {
+    color: whitesmoke;
+}
+
+input[type=submit] {
+    color: white;
+    font-size: large;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+    background-color: darkred;
+}
+
+input[type=submit]:hover {
+    background-color: red;
+}
+
+input[type=text],
+input[type=password] {
+    color: black;
+    text-shadow: none;
     height: 30px;
     margin: 5px;
-    padding: 0px;
 }
 
-#inverse {
-    height: 15px;
-    width: 15px;
-}
-
-body {
-    margin: 0px;
-    text-align: center;
-}
-
-input[type="submit"] {
-    border: none;
-    background-color: blue;
-    color: white;
-}
-
-#math {
-    display: block;
-    height: 50px;
-    background-color: blue;
-    text-align: center;
-    font-size: 40px;
+.left,
+.right {
+    padding: 20px;
 }
