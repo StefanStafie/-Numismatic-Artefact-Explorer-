@@ -4,7 +4,10 @@
     color: white;
     text-align: center;
 }
-
+@media screen and (max-width: 1060px) {
+    #primary { width:67%; }
+    #secondary { width:30%; margin-left:3%;}  
+}
 #red-canvas {
     display: inline-flex;
     flex-direction: row;
