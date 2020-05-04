@@ -1,37 +1,6 @@
-body {
-    background: repeating-linear-gradient(transparent, black 5px), repeating-linear-gradient(45deg, gray, black 5px);
-}
-
-.search_container {
-    margin: 2em;
+#search-bar {
     display: flex;
-    position: sticky;
-    align-self: center;
-    justify-content: center;
-    top: 50px;
-}
-
-.result_container {
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-}
-
-.item {
-    margin: 10px;
-    background-color: whitesmoke;
-    display: flex;
-    height: 300px;
-    justify-content: space-between;
-}
-
-img {
-    margin: 10px;
-    height: 280px;
-    width: 280px;
-}
-
-.description {
-    width: 50%;
-    padding: 20px;
+    align-items: flex-start;
+    align-self: flex-start;
+    flex-direction: column;
 }
