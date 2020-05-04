@@ -146,3 +146,28 @@ function sendMail($email)
     // Send
     mail('stefanstafie99@gmail.com', 'My Subject', "vjkavsjadkbhasvhiBEJCBFKSDBFSDJKBFJKSBFJKSBJK");
 }
+
+//-------------------------------------------------------COINS------------------------------------
+
+function addCoinToInventory($name, $description, $imgLink, $value, $mint, $source)
+{
+    $conn = OpenCon();
+    /*check if username exists*/
+    $result = $conn->query('Select id FROM users WHERE username = \'' . $name . '\'');
+    if (count($result->fetch_all()) > 0) {
+        echo "Username is already used.";
+        CloseCon($conn);
+        return false;
+    } else {
+        /*if user does not exist, create him*/
+        $conn = OpenCon();
+        $stmt = $conn->prepare('INSERT INTO users (first_name, last_name, username, password, email) VALUES (?,?,?,?,?)');
+        $stmt->bind_param('sssss', $firstName, $lastName, $name, $password, $email);
+        $stmt->execute();
+        $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
+        $result2 = $result->fetch_all();
+        databaseToSession($result2);
+        CloseCon($conn);
+        return true;
+    }
+}

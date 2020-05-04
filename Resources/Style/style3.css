@@ -18,6 +18,19 @@
     font-size: large;
 }
 
+#red-canvas-orizontal {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    margin-top: 30px;
+    border: 3px solid rgba(71, 71, 71, 1);
+    background-color: rgba(90, 8, 8, 0.6);
+    font-size: large;
+    padding: 23px;
+    font-size: large;
+}
+
 #red-canvas div {
     padding: 20px;
     margin-left: 20px;
@@ -42,7 +55,8 @@ input[type=submit]:hover {
 }
 
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=number] {
     color: black;
     text-shadow: none;
     height: 30px;

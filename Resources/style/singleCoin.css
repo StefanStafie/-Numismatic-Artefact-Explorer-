@@ -1,0 +1,20 @@
+.coin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    flex-direction: row;
+    width: 85vw;
+    padding: 5px;
+    background-color: rgb(133, 133, 133);
+    margin: 3px;
+}
+
+.coin div {
+    max-width: 40vw;
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+}
