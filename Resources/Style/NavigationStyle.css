@@ -2,14 +2,6 @@ body {
     background: repeating-linear-gradient(transparent, black 5px), repeating-linear-gradient(45deg, gray, black 5px);
 }
 
-.white {
-    /*plansa pe care picteaza marele domnitor*/
-    border: 2px dashed darkred;
-    display: inline-block;
-    padding: 50px;
-    background-color: whitesmoke;
-}
-
 #task {
     margin-top: -10px;
     display: flex;
