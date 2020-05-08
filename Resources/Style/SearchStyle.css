@@ -4,3 +4,11 @@
     align-self: flex-start;
     flex-direction: column;
 }
+
+input {
+    width: 120px;
+}
+
+input[type=file] {
+    width: 180px;
+}

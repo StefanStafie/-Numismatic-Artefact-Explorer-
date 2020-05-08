@@ -19,11 +19,13 @@
                 <br>
                 <input type="text" name="lastName" placeholder="Last Name" maxlength="50">
                 <br>
-                <input type="password" name="password" placeholder="Password" maxlength="50">
+                <input type="password" name="password" placeholder="Password" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
+  
                 <br>
                 <input type="password" name="password2" placeholder="Repeat Password" maxlength="50">
                 <br>
-                <input type="text" name="email" placeholder="Email" maxlength="50">
+                <input type="text" name="email" placeholder="Email" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                 <br><br>
                 <input type="submit" value="register" />
             </form>

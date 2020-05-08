@@ -16,7 +16,8 @@
                 <br>
                 <input type="text" name="oldpassword" placeholder="Old password" maxlength="50">
                 <br>
-                <input type="password" name="password" placeholder="New password" maxlength="50">
+                <input type="password" name="password" placeholder="New password" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
                 <br>
                 <input type="password" name="password2" placeholder="Repeat new password" maxlength="50">
                 <br>

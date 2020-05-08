@@ -13,7 +13,7 @@
             <h1>Change email</h1>
             <br><br>
             <form action="changeEmail.php" method="get">
-                <input type="text" name="email" placeholder="New email" maxlength="50">
+                <input type="text" name="email" placeholder="New email" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                 <br>
                 <input type="password" name="password" placeholder="password" maxlength="50">
                 <br>

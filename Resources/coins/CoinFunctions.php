@@ -1,28 +1,32 @@
 <?php
 require_once '../db/db_connection.php';
 
-function printCoin($name, $description, $imgLink, $value, $mint, $source)
+function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
 {
-    echo '<button onclick="echoHello()">Say Hello</button>';
     echo '<div class="coin">
             <div>
-                <p>Name:' . $name . '</p>
-                <p>Mint' . $mint . '</p>
-                <p>Value: ' . $value . '</p>
-                <p>Source: ' . $source . '</p>
+                <p>Identifier: ' . $identifier . '</p>
+                <p>Diameter: ' . $diameter . '</p>
+                <p>Weight: ' . $weight . '</p>
+                <p>Axis: ' . $axis . '</p>
+                <p>Collection: ' . $collection . '</p>
             </div>
 
             <div>
-                <p>' . $description . '</p>
+                <p> More about this coin <a href="' . $coinUrl . '">' . $coinUrl . '</a></p>
+                <p> More about the collection <a href="' . $collUrl . '">' . $collUrl . '</a></p>
+            
             </div>
 
             <div>
-                <img src="' . $imgLink . '">
+                <img src="' . $obverse . '" alt= "image unavailable">
+                <img src="' . $reverse . '" alt= "image unavailable">
             </div>
         </div>';
 }
+
 function addCoinToInventory($id)
 {
-    
+
     echo "added to inventory";
 }

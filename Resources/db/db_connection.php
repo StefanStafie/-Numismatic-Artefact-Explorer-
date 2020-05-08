@@ -149,25 +149,33 @@ function sendMail($email)
 
 //-------------------------------------------------------COINS------------------------------------
 
-function addCoinToInventory($name, $description, $imgLink, $value, $mint, $source)
+function getFirstCoins($limit)
 {
     $conn = OpenCon();
-    /*check if username exists*/
-    $result = $conn->query('Select id FROM users WHERE username = \'' . $name . '\'');
-    if (count($result->fetch_all()) > 0) {
-        echo "Username is already used.";
-        CloseCon($conn);
+    $result = $conn->query("Select * FROM coins LIMIT " . $limit  );
+    if(!$result)
         return false;
-    } else {
-        /*if user does not exist, create him*/
-        $conn = OpenCon();
-        $stmt = $conn->prepare('INSERT INTO users (first_name, last_name, username, password, email) VALUES (?,?,?,?,?)');
-        $stmt->bind_param('sssss', $firstName, $lastName, $name, $password, $email);
-        $stmt->execute();
-        $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
-        $result2 = $result->fetch_all();
-        databaseToSession($result2);
-        CloseCon($conn);
-        return true;
-    }
+    return $result->fetch_all();
+    CloseCon($conn);
+}
+
+function getMyCoins($limit)
+{
+    $conn = OpenCon();
+    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " LIMIT" . $limit  );
+    if(!$result)
+        return false;
+    return $result->fetch_all();
+    CloseCon($conn);
+}
+
+function addCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
+{
+    $conn = OpenCon();
+    $stmt = $conn->prepare('INSERT INTO coins (identifier, diameter, weight, axis, collection, object, col_uri, obv_ref, rev_ref) VALUES (?,?,?,?,?,?,?,?,?)');
+    $stmt->bind_param('sssssssss', $identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse);
+    $stmt->execute();
+    CloseCon($conn);
+    return true;
+
 }
