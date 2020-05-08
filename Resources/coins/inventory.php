@@ -17,7 +17,7 @@
     <div id="red-canvas-orizontal">
         <section id='search-bar'>
             <p>These are your coins</p>
-            <form action="search.php" method="get">
+            <form action="inventory.php" method="get">
                 <label for="filter">Filter:</label>
                 <input type="text" name="Identifier" placeholder="by identifier" maxlength="50">
                 <input type="number" name="Diameter" placeholder="by diameter" min="0" max="8000">

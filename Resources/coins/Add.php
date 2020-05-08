@@ -19,7 +19,7 @@
     <div id="red-canvas-orizontal">
         <section id='search-bar'>
             <p>Add a coint to the database</p>
-            <form action="search.php" method="get">
+            <form action="add.php" method="get">
                 <table>
                     <tr>
                         <td><label>Weight:</label></td>

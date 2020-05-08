@@ -162,7 +162,7 @@ function getFirstCoins($limit)
 function getMyCoins($limit)
 {
     $conn = OpenCon();
-    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " LIMIT" . $limit  );
+    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " LIMIT " . $limit  );
     if(!$result)
         return false;
     return $result->fetch_all();
