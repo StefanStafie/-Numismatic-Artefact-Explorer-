@@ -19,8 +19,8 @@ function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl
             </div>
 
             <div>
-                <img src="' . $obverse . '" alt= "image unavailable">
-                <img src="' . $reverse . '" alt= "image unavailable">
+                <img src="' . $obverse . '" alt= "image unavailable" class = "coinImage">
+                <img src="' . $reverse . '" alt= "image unavailable" class = "coinImage">
             </div>
         </div>';
 }
