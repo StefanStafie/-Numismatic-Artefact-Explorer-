@@ -19,10 +19,10 @@
             <p>You can search for coins here</p>
             <form action="search.php" method="get">
                 <label for="filter">Filter:</label>
-                <input type="text" name="Identifier" placeholder="by identifier" maxlength="50">
-                <input type="number" name="Diameter" placeholder="by diameter" min="0" max="8000">
-                <input type="number" name="Weight" placeholder="by weight" min="0" max="1012">
-                <input type="number" name="Axis" placeholder="by axis" min="0" max="360">
+                <input type="text" name="identifier" placeholder="by identifier" maxlength="50">
+                <input type="number" name="diameter" placeholder="by diameter" min="0" max="8000">
+                <input type="number" name="weight" placeholder="by weight" min="0" max="1012">
+                <input type="number" name="axis" placeholder="by axis" min="0" max="360">
                 <input type="file" name="image" id="by image" accept="image/jpg, image/jpeg">
                 <br>
 
@@ -31,12 +31,42 @@
             </form>
         </section>
         <br><br>
-        
+
         <?php
         require_once 'CoinFunctions.php';
         require_once '../db/db_connection.php';
         if (isset($_GET['number'])) {
-            $coins = getFirstCoins($_GET['number']);
+            $filter = "WHERE ";
+            if (isset($_GET['identifier']) && $_GET['identifier'] != "")
+                $filter .= "identifier like '%" . $_GET['identifier'] . "%'";
+            if (isset($_GET['diameter']) && $_GET['diameter'] != "")
+                if ($filter != "WHERE ")
+                    $filter .= "AND diameter = " . $_GET['diameter'];
+                else
+                    $filter .= "diameter = " . $_GET['diameter'];
+
+            if (isset($_GET['weight']) && $_GET['weight'] != "")
+                if ($filter != "WHERE ")
+                    $filter .= "AND weight = " . $_GET['weight'];
+                else
+                    $filter .= "weight = " . $_GET['weight'];
+
+            if (isset($_GET['axis']) && $_GET['axis'] != "")
+                if ($filter != "WHERE ")
+                    $filter .= "AND axis = " . $_GET['axis'];
+                else
+                    $filter .= "axis = " . $_GET['axis'];
+
+            if (isset($_GET['image']) && $_GET['image'] != "")
+                if ($filter != "WHERE ")
+                    $filter .= "AND image = " . $_GET['image'];
+                else
+                    $filter .= "image = " . $_GET['image'];
+
+            if($filter == "WHERE ")
+                $filter = "";
+
+            $coins = getFirstCoins($filter, $_GET['number']);
             if (!$coins) {
                 echo "0 results";
             } else {

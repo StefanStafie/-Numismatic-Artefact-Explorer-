@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once '../config.php';
 function OpenCon()
 {
@@ -12,7 +14,8 @@ function CloseCon($conn)
     $conn->close();
 }
 
-function databaseToSession($worker){
+function databaseToSession($worker)
+{
     $_SESSION['user_id'] = $worker[0][0];
     $_SESSION['name'] = $worker[0][1];
     $_SESSION['password'] = $worker[0][2];
@@ -51,7 +54,7 @@ function loginUser($name, $password)
     $result = $conn->query('Select * FROM users WHERE username = \'' . $name . '\' AND password = \'' . $password . '\'');
     $result2 = $result->fetch_all();
     if (count($result2) > 0) {
-        databaseToSession($result2  );
+        databaseToSession($result2);
         return true;
     } else {
         /*if user does not exist, error*/
@@ -149,11 +152,11 @@ function sendMail($email)
 
 //-------------------------------------------------------COINS------------------------------------
 
-function getFirstCoins($limit)
+function getFirstCoins($filter, $limit)
 {
     $conn = OpenCon();
-    $result = $conn->query("Select * FROM coins LIMIT " . $limit  );
-    if(!$result)
+    $result = $conn->query("Select * FROM coins " . $filter . " LIMIT " . $limit);
+    if (!$result)
         return false;
     return $result->fetch_all();
     CloseCon($conn);
@@ -162,14 +165,14 @@ function getFirstCoins($limit)
 function getMyCoins($limit)
 {
     $conn = OpenCon();
-    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " LIMIT " . $limit  );
-    if(!$result)
+    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " LIMIT " . $limit);
+    if (!$result)
         return false;
     return $result->fetch_all();
     CloseCon($conn);
 }
 
-function addCoin( $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
+function addCoin($diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
 {
     $conn = OpenCon();
     $stmt = $conn->prepare('INSERT INTO coins (diameter, weight, axis, collection, object, col_uri, obv_ref, rev_ref) VALUES (?,?,?,?,?,?,?,?)');
@@ -177,5 +180,4 @@ function addCoin( $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $o
     $worked = $stmt->execute();
     CloseCon($conn);
     return $worked;
-
 }

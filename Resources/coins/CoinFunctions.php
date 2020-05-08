@@ -3,6 +3,9 @@ require_once '../db/db_connection.php';
 
 function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
 {
+    if(substr( $obverse, 0, 4 ) !== "http"){
+        $obverse = URL . 'Resources/coins/uploads/' . $obverse;
+    }
     echo '<div class="coin">
             <div>
                 <p>Identifier: ' . $identifier . '</p>

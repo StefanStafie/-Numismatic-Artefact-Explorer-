@@ -12,6 +12,10 @@
     border-radius: 5px;
 }
 
+.coin div {
+    word-wrap: break-word;
+}
+
 .coinImage {
     border-radius: 3px;
     width: 150px;

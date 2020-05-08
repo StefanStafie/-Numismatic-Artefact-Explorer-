@@ -3,7 +3,7 @@
 <section id="task">
 	<!-- bara de sus care e fixed si ai pe ea buton pentru search, add si profile si inventory -->
 	<a href="<?php echo URL . "Resources/coins/search.php" ?>">
-		<button class="tabs inventory profile_btn">
+		<button class="tabs search search_btn">
 			<p>Search</p>
 		</button>
 	</a>

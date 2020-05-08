@@ -10,13 +10,15 @@
     <?php include '../navbar.php'; ?>
     <div id="red-canvas">
         <?php
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (!isset($_SESSION['user_id'])) {
             echo "<div><h1> You are currently just a GUEST here.</h1><br>
             <h1> Would you like to <a href = \"../db/login.php\">log in</a> or <a href = \"../db/register.php\">register</a>?</h1></div>";
         } else {
-            echo 
-            "<div>
+            echo
+                "<div>
                 <h1>Hello " . $_SESSION['name'] . "</h1> 
                 <h3> Your email: " . $_SESSION['email'] . "</h3>
                 <h3> First Name: " . $_SESSION['firstName'] . "</h3>

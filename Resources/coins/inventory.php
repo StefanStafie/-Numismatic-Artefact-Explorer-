@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
 <html lang='en'>
 <?php
-
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['user_id']))
+    header('Location: ../profile/profile.php');
 ?>
 
 <head>
@@ -31,7 +35,7 @@
             </form>
         </section>
         <br><br>
-        
+
         <?php
         require_once 'CoinFunctions.php';
         require_once '../db/db_connection.php';
@@ -50,7 +54,7 @@
         }
 
         ?>
-        
+
     </div>
 </body>
 
