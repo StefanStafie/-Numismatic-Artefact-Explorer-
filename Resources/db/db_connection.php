@@ -169,13 +169,13 @@ function getMyCoins($limit)
     CloseCon($conn);
 }
 
-function addCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
+function addCoin( $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
 {
     $conn = OpenCon();
-    $stmt = $conn->prepare('INSERT INTO coins (identifier, diameter, weight, axis, collection, object, col_uri, obv_ref, rev_ref) VALUES (?,?,?,?,?,?,?,?,?)');
-    $stmt->bind_param('sssssssss', $identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse);
-    $stmt->execute();
+    $stmt = $conn->prepare('INSERT INTO coins (diameter, weight, axis, collection, object, col_uri, obv_ref, rev_ref) VALUES (?,?,?,?,?,?,?,?)');
+    $stmt->bind_param('ssssssss', $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse);
+    $worked = $stmt->execute();
     CloseCon($conn);
-    return true;
+    return $worked;
 
 }

@@ -19,13 +19,13 @@
     <div id="red-canvas-orizontal">
         <section id='search-bar'>
             <p>Add a coint to the database</p>
-            <form action="add.php" method="get">
+            <form action="add.php" method="post">
                 <table>
                     <tr>
                         <td><label>Weight:</label></td>
-                        <td><input type="text" name="weight" placeholder="weight" maxlength="20"></td>
+                        <td><input type="text" name="weight" placeholder="weight" maxlength="20" required></td>
                         <td><label>Diameter:</label></td>
-                        <td><input type="text" name="diameter" placeholder="diameter" maxlength="20"></td>
+                        <td><input type="text" name="diameter" placeholder="diameter" maxlength="20" required></td>
                     </tr>
                     <tr>
                         <td><label>Collection link:</label></td>
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td><label>Obverse image:</label></td>
-                        <td><input type="file" name="obv" accept="image/jpg, image/jpeg"></td>
+                        <td><input type="file" name="obv" accept="image/jpg, image/jpeg" required></td>
                         <td><label>Reverse image:</label></td>
                         <td><input type="file" name="rev" accept="image/jpg, image/jpeg"></td>
                     </tr>
@@ -57,8 +57,11 @@
         <?php
         require_once 'CoinFunctions.php';
         require_once '../db/db_connection.php';
-
-
+        
+        if(addCoin($_POST['diameter'], $_POST['weight'], $_POST['axis'], $_POST['collection'], $_POST['coinUrl'], $_POST['collUrl'], $_POST['obv'], $_POST['rev']))
+            echo "coin added";
+        else
+            echo "coin could not be added"; 
         ?>
 
     </div>

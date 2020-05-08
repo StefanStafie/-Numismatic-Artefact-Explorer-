@@ -40,7 +40,8 @@
             if (!$coins) {
                 echo "0 results";
             } else {
-                for ($i = 0; $i < $_GET['number']; $i++) {
+                echo count($coins) . " results";
+                for ($i = 0; $i < count($coins); $i++) {
                     printCoin($coins[$i][4], $coins[$i][2], $coins[$i][1], $coins[$i][3], $coins[$i][6], $coins[$i][0], $coins[$i][5], $coins[$i][11], $coins[$i][14]);
                 }
             }
