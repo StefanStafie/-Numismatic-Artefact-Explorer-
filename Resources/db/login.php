@@ -1,3 +1,5 @@
+<?php require_once 'db_connection.php';
+?>
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -21,7 +23,6 @@
             </form>
             <br>
             <?php
-            require_once 'db_connection.php';
             function login()
             {
                 if (isset($_GET)) {

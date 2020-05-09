@@ -16,6 +16,11 @@
     word-wrap: break-word;
 }
 
+img {
+    width: 300px;
+    height: 300px;
+}
+
 .coinImage {
     border-radius: 3px;
     width: 150px;
@@ -41,4 +46,8 @@ img:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.vertical-coin {
+    display: inline;
 }

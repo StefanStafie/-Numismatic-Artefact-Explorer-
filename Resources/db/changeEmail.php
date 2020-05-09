@@ -1,4 +1,6 @@
-<?php include '../navbar.php'; ?>
+<?php
+require_once 'db_connection.php';
+?>
 
 <!DOCTYPE HTML>
 
@@ -8,6 +10,7 @@
 </head>
 
 <body>
+    <?php include '../navbar.php'; ?>
     <div id="red-canvas">
         <div>
             <h1>Change email</h1>
@@ -20,7 +23,6 @@
                 <input type="submit" value="Submit" />
             </form>
             <?php
-            require_once 'db_connection.php';
             function chEmail()
             {
                 if (isset($_GET) && count($_GET) >= 2) {

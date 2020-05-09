@@ -18,7 +18,9 @@ function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl
             <div>
                 <p> More about this coin <a href="' . $coinUrl . '">' . $coinUrl . '</a></p>
                 <p> More about the collection <a href="' . $collUrl . '">' . $collUrl . '</a></p>
-            
+                <button>Add to inventory</button>
+                <button>Add to compare</button>
+                <button>Share</button>
             </div>
 
             <div>

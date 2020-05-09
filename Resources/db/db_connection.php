@@ -162,16 +162,24 @@ function getFirstCoins($filter, $limit)
     CloseCon($conn);
 }
 
-function getMyCoins($limit)
+function getMyCoins($filter, $limit)
 {
     $conn = OpenCon();
-    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " LIMIT " . $limit);
+    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " " . $filter . " LIMIT " . $limit);
     if (!$result)
         return false;
     return $result->fetch_all();
     CloseCon($conn);
 }
-
+function findCoin($identifier)
+{
+    $conn = OpenCon();
+    $result = $conn->query("SELECT * FROM coins c WHERE identifier = '" . $identifier . "' LIMIT 1");
+    if (!$result)
+        return false;
+    return $result->fetch_all();
+    CloseCon($conn);
+}
 function addCoin($diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
 {
     $conn = OpenCon();

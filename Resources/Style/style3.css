@@ -38,6 +38,16 @@
     margin-right: 1.6em;
 }
 
+.cico {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cico p {
+    border-bottom: 3px dashed black;
+}
+
 a {
     color: whitesmoke;
 }

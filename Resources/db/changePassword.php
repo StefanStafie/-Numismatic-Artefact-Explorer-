@@ -1,4 +1,6 @@
-<?php include '../navbar.php'; ?>
+<?php
+require_once 'db_connection.php';
+?>
 
 <!DOCTYPE HTML>
 
@@ -8,23 +10,22 @@
 </head>
 
 <body>
+    <?php include '../navbar.php'; ?>
     <div id="red-canvas">
         <div>
             <h1>Change Password</h1>
-            
+
             <form action="changePassword.php" method="get">
                 <br>
                 <input type="text" name="oldpassword" placeholder="Old password" maxlength="50">
                 <br>
-                <input type="password" name="password" placeholder="New password" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <input type="password" name="password" placeholder="New password" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
                 <br>
                 <input type="password" name="password2" placeholder="Repeat new password" maxlength="50">
                 <br>
                 <input type="submit" value="Submit">
             </form>
             <?php
-            require_once 'db_connection.php';
             function chEmail()
             {
                 if (isset($_GET) && count($_GET) >= 3) {

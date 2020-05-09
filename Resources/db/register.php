@@ -1,4 +1,6 @@
-<?php include '../navbar.php'; ?>
+<?php
+include 'db_connection.php';
+?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -9,6 +11,7 @@
 </head>
 
 <body>
+    <?php include '../navbar.php'; ?>
     <section id="red-canvas">
         <div class="left">
             <h1>Register</h1>
@@ -19,9 +22,8 @@
                 <br>
                 <input type="text" name="lastName" placeholder="Last Name" maxlength="50">
                 <br>
-                <input type="password" name="password" placeholder="Password" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
-  
+                <input type="password" name="password" placeholder="Password" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
+
                 <br>
                 <input type="password" name="password2" placeholder="Repeat Password" maxlength="50">
                 <br>
@@ -30,7 +32,6 @@
                 <input type="submit" value="register" />
             </form>
             <?php
-            include 'db_connection.php';
             function register()
             {
                 if (isset($_GET)) {
