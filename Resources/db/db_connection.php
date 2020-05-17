@@ -152,25 +152,44 @@ function sendMail($email)
 
 //-------------------------------------------------------COINS------------------------------------
 
-function getFirstCoins($filter, $limit)
+function getFirstCoins($filter, $limit, $page)
 {
     $conn = OpenCon();
-    $result = $conn->query("Select * FROM coins " . $filter . " LIMIT " . $limit);
+    $result = $conn->query("Select * FROM coins " . $filter . " LIMIT " . $limit. " OFFSET " . $limit*($page-1));
+    if (!$result)
+        return false;
+    return $result->fetch_all();
+    CloseCon($conn);
+}
+function getFirstCoinsTotalCount($filter)
+{
+    $conn = OpenCon();
+    $result = $conn->query("Select count(*) FROM coins " . $filter);
     if (!$result)
         return false;
     return $result->fetch_all();
     CloseCon($conn);
 }
 
-function getMyCoins($filter, $limit)
+function getMyCoins($filter, $limit, $page)
 {
     $conn = OpenCon();
-    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " " . $filter . " LIMIT " . $limit);
+    $result = $conn->query("SELECT * FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " " . $filter . " LIMIT " . $limit. " OFFSET " . $limit*($page-1));
     if (!$result)
         return false;
     return $result->fetch_all();
     CloseCon($conn);
 }
+function getMyCoinsTotalCount($filter)
+{
+    $conn = OpenCon();
+    $result = $conn->query("SELECT count(*) FROM coins c join user_coins u on c.identifier = u.id_coin where u.id_user = " .  $_SESSION['user_id'] . " " . $filter );
+    if (!$result)
+        return false;
+    return $result->fetch_all();
+    CloseCon($conn);
+}
+
 function findCoin($identifier)
 {
     $conn = OpenCon();
