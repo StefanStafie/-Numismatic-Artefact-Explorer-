@@ -32,6 +32,8 @@ require_once '../db/db_connection.php';
                 <input type="submit" value="Search" />
             </form>
         </section>
+        <a id = "compareLink" href="compare.php">Go to compare</a>
+
         <br><br>
 
         <?php

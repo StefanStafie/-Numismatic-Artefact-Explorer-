@@ -34,9 +34,12 @@ if (!isset($_SESSION['user_id']))
 
                 <input type="number" name="number" placeholder="no of results" min="0" max="200" value="20">
                 <input type="submit" value="Search" />
+                
             </form>
+           
         </section>
         <br><br>
+        <a id = "compareLink" href="compare.php">Go to compare</a>
 
         <?php
         require_once 'CoinFunctions.php';
@@ -68,7 +71,7 @@ if (!isset($_SESSION['user_id']))
             } else {
                 echo count($coins) . " results";
                 for ($i = 0; $i < count($coins); $i++) {
-                    printCoin($coins[$i][4], $coins[$i][2], $coins[$i][1], $coins[$i][3], $coins[$i][6], $coins[$i][0], $coins[$i][5], $coins[$i][11], $coins[$i][14]);
+                    printCoinInventory($coins[$i][4], $coins[$i][2], $coins[$i][1], $coins[$i][3], $coins[$i][6], $coins[$i][0], $coins[$i][5], $coins[$i][11], $coins[$i][14]);
                 }
             }
         } else {

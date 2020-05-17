@@ -85,7 +85,33 @@ function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl
             </div>
         </div>';
 }
+function printCoinInventory($identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
+{
+    if (substr($obverse, 0, 4) !== "http") {
+        $obverse = URL . 'Resources/coins/uploads/' . $obverse;
+    }
+    echo '<div class="coin">
+            <div>
+                <p>Identifier: ' . $identifier . '</p>
+                <p>Diameter: ' . $diameter . '</p>
+                <p>Weight: ' . $weight . '</p>
+                <p>Axis: ' . $axis . '</p>
+                <p>Collection: ' . $collection . '</p>
+            </div>
 
+            <div>
+                <p> More about this coin <a href="' . $coinUrl . '">' . $coinUrl . '</a></p>
+                <p> More about the collection <a href="' . $collUrl . '">' . $collUrl . '</a></p>
+                <button class="' . $identifier . ' compareAdd" onClick="addToCompare(this)">Add to compare</button>
+                <button class="' . $identifier . ' share" id = "'.$coinUrl.'" onClick="copyToClipboard(this)">Share</button>
+            </div>
+
+            <div>
+                <img src="' . $obverse . '" alt= "image unavailable" class = "coinImage">
+                <img src="' . $reverse . '" alt= "image unavailable" class = "coinImage">
+            </div>
+        </div>';
+}
 function addCoinToInventory($id)
 {
 

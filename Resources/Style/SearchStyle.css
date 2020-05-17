@@ -5,6 +5,14 @@
     flex-direction: column;
 }
 
+#compareLink {
+    background-color: darkred;
+    display: flex;
+    position: fixed;
+    bottom: 3px;
+    padding: 10px;
+}
+
 input {
     width: 120px;
 }
