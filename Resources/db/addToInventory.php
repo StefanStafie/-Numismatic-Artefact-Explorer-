@@ -1,42 +1,6 @@
 <?php
 require_once 'db_connection.php';
+
+echo addUserCoin($_SESSION['user_id'], $_GET['coinId']);
 ?>
 
-<!DOCTYPE HTML>
-
-<head>
-    <link rel="stylesheet" href="../style/style3.css">
-    <title>addCoinPls</title>
-</head>
-
-<body>
-    <div id="red-canvas">
-        <div>
-            <h1>Change email</h1>
-            <br><br>
-            <form action="changeEmail.php" method="get">
-                <input type="text" name="email" placeholder="New email" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                <br>
-                <input type="password" name="password" placeholder="password" maxlength="50">
-                <br>
-                <input type="submit" value="Submit" />
-            </form>
-            <?php
-            function chEmail()
-            {
-                if (isset($_GET) && count($_GET) >= 2) {
-                    if (changeEmail((string) $_GET['email'], (string) $_GET['password'])) {
-                        header("Location: " . URL . "/Resources/profile/profile.php");
-                    } else {
-                        echo "bad password";
-                    }
-                } else {
-                    echo "please input new email and password";
-                }
-            }
-            chEmail();
-
-            ?>
-        </div>
-    </div>
-</body>

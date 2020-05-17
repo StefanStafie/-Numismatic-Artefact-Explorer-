@@ -1,9 +1,65 @@
 <?php
 require_once '../db/db_connection.php';
+?>
 
+<script>
+    function addToInventory(button) {
+        let xhr = new XMLHttpRequest();
+
+        let url = "<?php echo URL . "Resources/db/addToInventory.php?coinId=" ?>" + button.classList[0];
+        alert(url);
+        xhr.open('GET', url, true);
+        xhr.send();
+
+        button.style.backgroundColor = "green";
+        button.innerHTML = "Item was added";
+        setTimeout(() => {
+            button.innerHTML = "Add to inventory";            
+            button.style.backgroundColor = "white";
+        }, 2000);
+
+        
+    }
+
+    function addToCompare(button) {
+        let xhr = new XMLHttpRequest();
+        let url = "<?php echo URL . "Resources/db/addToCompare.php?coinId=" ?>" + button.classList[0];
+        alert(url);
+        xhr.open('GET', url, true);
+        xhr.send();
+
+        button.style.backgroundColor = "green";
+        button.innerHTML = "Item was added";
+        setTimeout(() => {
+            button.innerHTML = "Add to compare";
+            button.style.backgroundColor = "white";
+        }, 2000);
+        
+    }
+
+    const copyToClipboard = button => {
+        const el = document.createElement('textarea');
+        el.value = button.id;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+
+        button.style.backgroundColor = "green";
+        button.innerHTML = "Copied to clipboard";
+        setTimeout(() => {
+            button.innerHTML = "Share";
+            button.style.backgroundColor = "white";
+        }, 2000);
+    };
+</script>
+
+
+
+<?php
 function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $obverse, $reverse)
 {
-    if(substr( $obverse, 0, 4 ) !== "http"){
+    if (substr($obverse, 0, 4) !== "http") {
         $obverse = URL . 'Resources/coins/uploads/' . $obverse;
     }
     echo '<div class="coin">
@@ -18,9 +74,9 @@ function printCoin($identifier, $diameter, $weight, $axis, $collection, $coinUrl
             <div>
                 <p> More about this coin <a href="' . $coinUrl . '">' . $coinUrl . '</a></p>
                 <p> More about the collection <a href="' . $collUrl . '">' . $collUrl . '</a></p>
-                <button>Add to inventory</button>
-                <button>Add to compare</button>
-                <button>Share</button>
+                <button class="' . $identifier . ' inventoryAdd" onClick="addToInventory(this)">Add to inventory</button>
+                <button class="' . $identifier . ' compareAdd" onClick="addToCompare(this)">Add to compare</button>
+                <button class="' . $identifier . ' share" id = "'.$coinUrl.'" onClick="copyToClipboard(this)">Share</button>
             </div>
 
             <div>
@@ -39,29 +95,26 @@ function addCoinToInventory($id)
 ?>
 
 <script>
+    function post(path, params, method = 'post') {
 
-function post(path, params, method='post') {
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        const form = document.createElement('form');
+        form.method = method;
+        form.action = path;
 
-    // The rest of this code assumes you are not using a library.
-    // It can be made less wordy if you use one.
-    const form = document.createElement('form');
-    form.method = method;
-    form.action = path;
-  
-    for (const key in params) {
-      if (params.hasOwnProperty(key)) {
-        const hiddenField = document.createElement('input');
-        hiddenField.type = 'hidden';
-        hiddenField.name = key;
-        hiddenField.value = params[key];
-  
-        form.appendChild(hiddenField);
-      }
+        for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = key;
+                hiddenField.value = params[key];
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
     }
-  
-    document.body.appendChild(form);
-    form.submit();
-  }
-
 </script>
-

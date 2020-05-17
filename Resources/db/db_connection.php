@@ -194,8 +194,8 @@ function addCoin($diameter, $weight, $axis, $collection, $coinUrl, $collUrl, $ob
 
 function addUserCoin($userId, $coinId) {
     $conn = OpenCon();
-    $stmt = $conn->prepare('INSERT INTO user_coins (id_user, id_coin) VALUES (?,?)');
-    $stmt->bind_param('ss', $userId, $coinId);
+    $stmt = $conn->prepare("INSERT INTO user_coins (id_user, id_coin) VALUES (?,?)");
+    $stmt->bind_param("ss", $userId, $coinId); 
     $worked = $stmt->execute();
     CloseCon($conn);
     return $worked;

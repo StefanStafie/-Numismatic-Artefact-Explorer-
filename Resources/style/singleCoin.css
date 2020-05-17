@@ -51,3 +51,12 @@ img:active {
 .vertical-coin {
     display: inline;
 }
+
+.share,
+.compareAdd,
+.inventoryAdd {
+    background-color: rgba(90, 8, 8, 0.6);
+    border: none;
+    height: 30px;
+    width: 170px;
+}

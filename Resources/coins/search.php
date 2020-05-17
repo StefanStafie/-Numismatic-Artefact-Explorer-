@@ -25,7 +25,7 @@ require_once '../db/db_connection.php';
                 <input type="number" name="diameter" placeholder="by diameter" min="0" max="8000">
                 <input type="number" name="weight" placeholder="by weight" min="0" max="1012">
                 <input type="number" name="axis" placeholder="by axis" min="0" max="360">
-                <input type="file" name="image" id="by image" accept="image/jpg, image/jpeg">
+                <!--<input type="file" name="image" id="by image" accept="image/jpg, image/jpeg">-->
                 <br>
 
                 <input type="number" name="number" placeholder="no of results" min="0" max="59000" value="20">
@@ -62,7 +62,7 @@ require_once '../db/db_connection.php';
             if ($filter == "WHERE ")
                 $filter = "";
 
-            echo $filter;
+            echo $filter . "    ";
             $coins = getFirstCoins($filter, $_GET['number']);
             if (!$coins) {
                 echo "0 results";
