@@ -4,8 +4,8 @@
 <html lang='en'>
 
 <head>
-    <link rel="stylesheet" href="../style/style3.css">
-    <link rel="stylesheet" href="../style/LoginRegister.css">
+    <link rel="stylesheet" href="../Style/style3.css">
+    <link rel="stylesheet" href="../Style/LoginRegister.css">
     <title>Profile->Login</title>
 </head>
 
