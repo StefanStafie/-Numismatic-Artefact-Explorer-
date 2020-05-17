@@ -28,6 +28,7 @@ if (!isset($_SESSION)) {
             </div>
             <div>
                 <h3>Not much to do here</h3><br>
+                <p><a href = \"../db/statsPage.php\">Statistics</a></p>
                 <p><a href = \"../db/changeEmail.php\">Change email</a></p>
                 <p><a href = \"../db/changePassword.php\">Change password</a></p>
                 <p><a href = \"../db/signout.php\">Sign Out</a></p>
