@@ -33,7 +33,7 @@ require_once '../db/db_connection.php';
                 <input type="number" name="number" placeholder="no of results" min="1" max="200" value="<?php if (isset($_GET['number']) && $_GET['number'] != "")
                                                                                                             echo $_GET['number']; else echo 20;?>">
                 <label>page:</label>
-                <input type="number" name="page" placeholder="page" min="1" max="200" value="<?php if (isset($_GET['page']) && $_GET['page'] != "")
+                <input type="number" name="page" placeholder="page" min="1" max="2500" value="<?php if (isset($_GET['page']) && $_GET['page'] != "")
                                                                                                     echo $_GET['page']; else echo 1;?>">
                 <input type="submit" value="Search" />
             </form>
